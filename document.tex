@@ -23,12 +23,14 @@
 
 This tutorial will provide a basic introduction to git, with the intended audience being someone who is new to version control and wishes to use it for a long-term project. It assumes you will be using a command line interface on mac, with GitHub as the location for the remote repository. If you do not have a GitHub account, create one prior to following the tutorial. 
 
-Git is a version control system which helps developers keep their work organized by keeping track of what has been changed, when, and by whom.  It works by storing files in four locations. One is the remote repository (on GitHub), and three are local: the working directory, the staging area, and the local repository. In this tutorial you will learn how to move files between these locations, as well as how to manage different versions of your work using stashing, branching, and merging.
+Git is a version control system which helps developers keep their work organized by keeping track of what has been changed, when, and by whom. Learning how to use git is a worthwhile investment for a number of reasons. Firstly, it is used by nearly everyone who works in the computer science area, and is therefore important to know for the purpose of being able to find jobs and do them well. Beyond this, git is useful to know even for someone who does not intend to pursue work in the tech industry. Especially when working on large projects, it is important to be able to track changes and ensure your work does not get lost. Tracking changes is important because it allows you to go back to a previous version of your work if you accidentally break something, or to try out an experimental feature while leaving the primary version of your code unchanged. 
+
+Git works by storing files in four locations known as repositories, which can be though of as a storage location for a set of files. One is the remote repository (on GitHub), and three are local: the working directory, the staging area, and the local repository. The remote repository exists to store your work in a place while it will not be lost and can be easily shared with others. The three remote repositories exist as a place to make changes to your code and to organize them for the purpose of being sent to the remote repository. In this tutorial you will learn how to move files between these locations, as well as how to manage different versions of your work using stashing, branching, and merging. These terms will be defined as they are introduced. 
 
 
 \section{Initialize local Repository}
 
-In this tutorial we will be initializing the repository locally using git init and connecting it to remote later, but it is also possible to initialize the repository on github and use git clone to make a local repository. 
+In this tutorial we will be initializing the repository locally using git init and connecting it to remote later, but it is also possible to initialize the repository on GitHub and use git clone to make a local repository. 
 
 In terminal, create a new directory for your project and navigate to it. Add a file file1.txt and write the letters a, b, and c, each on a separate line.\\\\
 \textcolor{cyan}{
@@ -52,7 +54,7 @@ Let’s move our text file to the staging area. Any file we want to put in our l
 git add file1.txt\\
 }
 
-Now that our text file is in the staging area we can add it to our local repository via a commit.\\\\
+Now that our text file is in the staging area we can add it to our local repository via a commit. Committing a file means that we want it to be included the next time we add files to our remote repository.\\\\
 \textcolor{cyan}{
 git commit\\
 }
@@ -61,14 +63,14 @@ You will be prompted to add a comment to your commit. Write something about what
 
 \subsection{Connecting and pushing to Remote}
 
-Now that we have a local repository with a commit, it is time to connect to remote. In GitHub, create an empty repository named git-tutorial. 
+Now that we have a local repository with a commit, it is time to connect to remote. This assigns a remote repository to our local one to which we can add our files. In GitHub, create an empty repository named git-tutorial. 
 
 Back in terminal, type the following command:\\\\
 \textcolor{cyan}{
 git remote add origin https://github.com/yourUsername/git-tutorial.git\\
 }
 
-This command adds the GitHub repository we just created as a remote associated with the local repository. ‘origin’ is a name we are assigning to the url so that we do not have to type it out again. We will now ‘push’ our local repository to remote. \\\\
+This command adds the GitHub repository we just created as a remote associated with the local repository. ‘origin’ is a name we are assigning to the url so that we do not have to type it out again. We will now ‘push’ our local repository to remote. Pushing means to move what whatever files have been committed since our last push into our remote repository on GitHub. \\\\
 \textcolor{cyan}{
 git push --set-upstream origin main\\
 }
@@ -80,7 +82,7 @@ Go back to GitHub and refresh the page. You should now see your file.txt in the 
 
 \subsection{Pulling from Remote}
 
-If you are working with other people, they may make changes to the remote repository which you want to see reflected in your local repository. To mimic this, we will add our own file in GitHub and ‘pull’ it to local. In your github repository, click on ‘add file’. Name it new-file.txt and write whatever you want in it. Click ‘commit changes’.
+If you are working with other people, they may make changes to the remote repository which you want to see reflected in your local repository. To mimic this, we will add our own file in GitHub and ‘pull’ it to local. Pulling means to make your local repository match the remote one. In your GitHub repository, click on ‘add file’. Name it new-file.txt and write whatever you want in it. Click ‘commit changes’.
 
 Back in terminal, pull from remote.\\\\
 \textcolor{cyan}{
@@ -127,7 +129,7 @@ The stash file is no longer in the staging area, but is still in the local direc
 
 \subsection{Branching}
 
-Branching can be used to make changes in a way that does not impact the main version of your work. We will make a new branch called new-branch.\\\\
+Branching can be used to make changes in a way that does not impact the main version of your work. It creates a new working area which can later be added back into the main one. We will make a new branch called new-branch.\\\\
 \textcolor{cyan}{
 git branch new-branch\\
 git branch\\
@@ -156,7 +158,7 @@ We now have two branches with two different versions of file1.txt.
 
 \subsection{Merging }
 
-Let’s merge our new branch into our main branch so that the changes we have made can be consolidated into one place. Make sure you are still in the main branch.\\\\
+Let’s merge our new branch into our main branch so that the changes we have made can be consolidated into one place. Merging means to combine two different versions of code into one. Make sure you are still in the main branch.\\\\
 \textcolor{cyan}{
 git merge new-branch\\
 }
